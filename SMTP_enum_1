@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+import socket
+
+print ("Bem vindo ao Script de Enumeração SMTP")
+
+
+ip = input ("Digite o IP a ser verificado: ")
+
+
+print ("conectando ao serviço")
+smtp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+smtp.connect((ip, 25))
+
+
+resposta = smtp.recv(1024)
+print (resposta)
+
+
+print ("Verificando usuário root")
+smtp.send(str.encode("VRFY root \r\n"))
+usuario = tcp.recv(1024)
+print (usuario)
